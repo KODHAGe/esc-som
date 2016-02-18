@@ -1,0 +1,18 @@
+{
+  "name": "som-esc",
+  "version": "0.0.1",
+  "description": "A thing for visualizing the eurovision",
+  "main": "index.js",
+  "scripts": {
+    "test": "coolstuff"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "wrw",
+  "license": "ISC",
+  "dependencies": {
+    "ml-som": "0.0.6"
+  }
+}
