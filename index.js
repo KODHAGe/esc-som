@@ -191,6 +191,9 @@ function handleRequest(request, response) {
       response.write(
         "<script>var donuts = $('.donut').toArray(); var texts = $('.under').toArray(); console.log(donuts); console.log($('.donut'));var donutses = $('.donut').peity('donut', {innerRadius:20,radius: 30,fill: ['#CED73E', '#FCF2A9', '#FFCB85','#ED6743', '#F97DAA', '#E8B5FF','#76A4F4', '#97FFFF', '#7EC1AB','#B7589C', '#B3DB6B', '#DCF9AA','#E063C3', '#FFC943']});</script>"
       );
+      response.write(
+        "<div id='end'><strong>Description:</strong><p>This data visualization displays the generation of and positioning of nodes within a Self-Organizing Map, or SOM, out of Eurovision Song Contest data. For the data, we pursued to deconstruct the eurovision entries of 2015 into categorizable attributes. <li>We analysed most common nouns and verbs in order to get some grasp of the content of the lyrics of each song, and used the frequency of these words as a metric, getting values for LOVE, TIME, HEART, KNOW, LET and START.</li><br><li>Original language was considered, and whether the song had parts both in English and another language.</li><br><li>A musical analysis tool (Serato) was used to analyze the tempo (beats-per-minute) and key of the song. The key was split into two components: Major or minor key, and the distance of the key to the note C. Distance to C was used in order to be able to represent the circular scale of notes on a linear scale, which, while not being a proper representation of the key gives some indication of it in relation to other keys.</li><br><li>The amount of lead singers and the gender of the leading voice were considered</li><br><li>The range of vocabulary was analysed, giving a scope of how rich the language of each songs is.</li><br>All metrics were converted to a scale of 1-5, compiled into a dataset, which is then passed to the SOM-algorithm. The SOM is then used to plot this data into a grid of donut graphs – in which each graph shows the values of the attributes of the underlying data in that particular node. Each song is then placed into the grid into the position that best represents the values of its attributes.</p><br><p><strong>Information Visualization and Design</strong></p><p>Marija Erjavec, Wolf Wikgren, Aalto University 2016</p><p>https://github.com/mljs/som/</p><p>http://benpickles.github.io/peity/</p></div></div></html>"
+      );
       first = false;
     } else if (iterations % 27 == 0) {
       //console.log("yo");
@@ -273,76 +276,7 @@ function handleRequest(request, response) {
 
   console.log(y[resultArr[0][0]][resultArr[0][1]]);
 
-  /*y[0][0] = 1000;
-  y[0][4] = 1000;
-  y[4][4] = 1000;
-  y[4][0] = 1000;*/
-  /*y[result1[0]][result1[1]] = 1;
-  y[result2[0]][result2[1]] = 1;
-  y[result3[0]][result3[1]] = 1;*/
-
-  //console.log(y);
-  //response.write('<script src="http://ookap.net/r/libs/hexagon.js"></script><canvas id="HexCanvas" width="4000" height="3000"></canvas>');
-
-
-
-  // SOME PLOTLY
-  /*
-    response.write(
-      '<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
-    );
-    response.write('<div id="myDiv" style="width:100%;height:100%"></div>');
-  */
-
-  // MORE PLOTLY
-  /*response.write(
-    '<script>  var data = [{z: ['
-  );
-
-  console.log(y);
-  for (var i = 0; i < y.length; i++) {
-    console.log('[' + y[i] + '],');
-    response.write('[' + y[i] + '],');
-  }
-  response.write(
-    '],type: "surface"}];var layout = {title: "",margin: {l: 65,r: 50,b: 65,t: 200}};var myPlot = Plotly.newPlot("myDiv", data, layout);'
-  );
-  response.write(
-    'var plotThing = document.getElementById("myDiv");plotThing.on("plotly_hover", function(data){console.log("hover");var infotext = data.points.map(function(d){return (d.data.text+": x= "+d.x+", y= "+d.y.toPrecision(3));});hoverInfo.innerHTML = infotext.join("");}).on("plotly_unhover", function(data){hoverInfo.innerHTML = "";});</script>'
-  );*/
-
-  // OTHER PLOTLY
-
-  /*
-    response.write(
-      '<script>  var trace = {x: [' + xSet + '],');
-    response.write(
-      'y: [' + ySet + '],');
-    response.write(
-      'z: [' + zSet + ']');
-
-      */
-
-  /*response.write(
-    ',mode: "markers",marker:{size:2,line:{color:"rgba(217, 217, 217, 1)",width:0.5},opacity:0.8},type:"scatter3d"};var data = [trace];var layout = {margin:{l:0,r:0,b:0,t:0}};Plotly.newPlot("myDiv", data, layout);</script>'
-  );*/
-
-  /*
-    response.write(
-      ',mode: "markers",marker:{size:6,line:{color:"rgba(217, 217, 217, 0.14)",width:0.5},opacity:0.8},type:"scatter3d"};var data = [trace,{alphahull:0.7,opacity:0.1,type:"mesh3d",x:[' +
-      xSet + '],y:[' + ySet + '],z:[' + zSet +
-      ']}];var layout = {margin:{l:0,r:0,b:0,t:0}};Plotly.newPlot("myDiv", data, layout);</script>'
-    );*/
-
-  /*response.write(
-    '<script>var hexagonGrid = new HexagonGrid("HexCanvas", 50);hexagonGrid.drawHexGrid(30, 30, 50, 50, true);hexagonGrid.drawHexAtColRow(' +
-    result1[0] + ',' + result1[1] + ',"#222");hexagonGrid.drawHexAtColRow(' +
-    result2[0] + ',' + result2[1] + ',"#222");hexagonGrid.drawHexAtColRow(' +
-    result3[0] + ',' + result3[1] + ',"#222");</script>'
-  )*/
-  response.end(
-    "<div id='end'><strong>Description:</strong><p>This data visualization displays the generation of and positioning of nodes within a Self-Organizing Map, or SOM, out of Eurovision Song Contest data. For the data, we pursued to deconstruct the eurovision entries of 2015 into categorizable attributes. <li>We analysed most common nouns and verbs in order to get some grasp of the content of the lyrics of each song, and used the frequency of these words as a metric, getting values for LOVE, TIME, HEART, KNOW, LET and START.</li><br><li>Original language was considered, and whether the song had parts both in English and another language.</li><br><li>A musical analysis tool (Serato) was used to analyze the tempo (beats-per-minute) and key of the song. The key was split into two components: Major or minor key, and the distance of the key to the note C. Distance to C was used in order to be able to represent the circular scale of notes on a linear scale, which, while not being a proper representation of the key gives some indication of it in relation to other keys.</li><br><li>The amount of lead singers and the gender of the leading voice were considered</li><br><li>The range of vocabulary was analysed, giving a scope of how rich the language of each songs is.</li><br>All metrics were converted to a scale of 1-5, compiled into a dataset, which is then passed to the SOM-algorithm. The SOM is then used to plot this data into a grid of donut graphs – in which each graph shows the values of the attributes of the underlying data in that particular node. Each song is then placed into the grid into the position that best represents the values of its attributes.</p><br><p><strong>Information Visualization and Design</strong></p><p>Marija Erjavec, Wolf Wikgren, Aalto University 2016</p><p>https://github.com/mljs/som/</p><p>http://benpickles.github.io/peity/</p></div></div></html>"
-  );
+  response.end();
   console.log("Response sent.")
 }
 
